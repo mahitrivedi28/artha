@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARTHA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="auth-shell">
+  <div class="auth-visual">
+    <div class="auth-visual-content">
+      <div class="brand"><div class="brand-mark">₹</div><div><div class="brand-name">ARTHA<br><h6>Application for Remittance tracking and handling with AI</h6></div><div class="brand-tag">Finance Ledger</div></div></div>
+      <div class="auth-quote">"The best budget isn't the strictest one — it's the one you actually <span>keep</span>."</div>
+    </div>
+    <div class="auth-stats">
+      <div><div class="auth-stat-num"></div><div class="auth-stat-label"></div></div>
+      <div><div class="auth-stat-num"></div><div class="auth-stat-label"></div></div>
+      <div><div class="auth-stat-num"></div><div class="auth-stat-label"></div></div>
+    </div>
+  </div>
+  <div class="auth-form-side">
+    <div class="auth-card">
+      <div class="auth-title">Welcome back</div>
+      <div class="auth-sub">Sign in to your ledger.</div>
+
+      <div class="lockout-box" id="lockoutBox"></div>
+
+      <div class="field"><label>Email</label><input type="email" placeholder="you@example.com" value="Sqaud0208@gmail.com"></div>
+      <div class="field password-field">
+        <label>Password</label>
+        <input type="password" id="loginPassInput" placeholder="Enter your password">
+        <button class="password-toggle" onclick="togglePassword('loginPassInput', this)"></br></br>Show</button>
+      </div>
+      <div class="attempts-row" id="attemptsRow">
+        <span class="attempt-dot"></span><span class="attempt-dot"></span><span class="attempt-dot"></span><span class="attempt-dot"></span><span class="attempt-dot"></span>
+      </div>
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin:14px 0 20px;">
+        <label class="check-row"><input type="checkbox" checked> Remember me</label>
+        <a href="forgot-password.html" style="font-size:12.5px; color:var(--teal); font-weight:600; text-decoration:none;">Forgot password?</a>
+      </div>
+
+      <button class="btn btn-primary btn-block btn-lg" id="loginSubmitBtn" onclick="handleLoginDemo()">Sign in</button>
+
+      <div class="auth-divider">or continue with</div>
+      <div class="social-row">
+        <button class="social-btn">Google</button>
+        <button class="social-btn">GitHub</button>
+      </div>
+      <div class="auth-footer-link">New to ARTHA? <a href="register.html">Create an account</a></div>
+
+    </div>
+  </div>
+</div>
+<script src="js/app.js"></script>
+<script>
+function handleLoginDemo() {
+  const pw = document.getElementById('loginPassInput').value;
+  // Demo-only client check so the lockout/attempt UI can be exercised.
+  // Real credential verification must happen server-side over HTTPS.
+  if (pw === 'demo1234') {
+    simulateLoginAttempt(true);
+    setTimeout(() => location.href = 'dashboard.html', 600);
+  } else {
+    simulateLoginAttempt(false);
+  }
+}
+</script>
+</body>
+</html>

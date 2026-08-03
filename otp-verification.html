@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verify code — ARTHA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="auth-shell">
+  <div class="auth-visual">
+    <div class="auth-visual-content">
+      <div class="brand"><div class="brand-mark">₹</div><div><div class="brand-name">ARTHA</div><div class="brand-tag">Finance Ledger</div></div></div>
+      <div class="auth-quote">"The best budget isn't the strictest one — it's the one you actually <span>keep</span>."</div>
+    </div>
+    <div class="auth-stats">
+      <div><div class="auth-stat-num">₹13.8k</div><div class="auth-stat-label">avg. monthly saved</div></div>
+      <div><div class="auth-stat-num">2,400+</div><div class="auth-stat-label">students tracking</div></div>
+      <div><div class="auth-stat-num">AES-256</div><div class="auth-stat-label">vault encryption</div></div>
+    </div>
+  </div>
+  <div class="auth-form-side">
+    <div class="auth-card">
+      <div class="auth-title">Verify your identity</div>
+      <div class="auth-sub">Enter the 6-digit code sent to r***a@example.com</div>
+      <div class="otp-row" id="otpGroup">
+        <input class="otp-box" maxlength="1" inputmode="numeric">
+        <input class="otp-box" maxlength="1" inputmode="numeric">
+        <input class="otp-box" maxlength="1" inputmode="numeric">
+        <input class="otp-box" maxlength="1" inputmode="numeric">
+        <input class="otp-box" maxlength="1" inputmode="numeric">
+        <input class="otp-box" maxlength="1" inputmode="numeric">
+      </div>
+      <button class="btn btn-primary btn-block btn-lg" onclick="location.href='reset-password.html'">Verify code</button>
+      <div class="resend-row" style="margin-top:16px;">Didn't get it? <button id="resendBtn" data-label="Resend code">Resend code</button></div>
+      <div class="auth-footer-link"><a href="login.html">← Back to sign in</a></div>
+
+    </div>
+  </div>
+</div>
+<script src="js/app.js"></script>
+<script>initOtpGroup('otpGroup'); initResendTimer('resendBtn', 30);</script>
+</body>
+</html>

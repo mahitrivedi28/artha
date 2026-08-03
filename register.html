@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create account — ARTHA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="auth-shell">
+  <div class="auth-visual">
+    <div class="auth-visual-content">
+      <div class="brand"><div class="brand-mark">₹</div><div><div class="brand-name">ARTHA<br><h6>Application for Remittance tracking and handling with AI</h6></div><div class="brand-tag">Finance Ledger</div></div></div>
+      <div class="auth-quote">"The best budget isn't the strictest one — it's the one you actually <span>keep</span>."</div>
+    </div>
+    <div class="auth-stats">
+      <div><div class="auth-stat-num"></div><div class="auth-stat-label"></div></div>
+      <div><div class="auth-stat-num"></div><div class="auth-stat-label"></div></div>
+      <div><div class="auth-stat-num"></div><div class="auth-stat-label"></div></div>
+    </div>
+  </div>
+  <div class="auth-form-side">
+    <div class="auth-card">
+      <div class="auth-title">Create your account</div>
+      <div class="auth-sub">Start building your ledger in minutes.</div>
+
+      <div class="field"><label>Full name</label><input placeholder="Sqaud"></div>
+      <div class="field"><label>Email</label><input type="email" placeholder="you@example.com"></div>
+      <div class="field password-field">
+        <label>Password</label>
+        <input type="password" id="regPassInput" placeholder="At least 8 characters">
+        <button class="password-toggle" onclick="togglePassword('regPassInput', this)">Show</button>
+        <div class="strength-meter" id="regPwMeter"><div class="strength-bar"></div><div class="strength-bar"></div><div class="strength-bar"></div><div class="strength-bar"></div></div>
+        <div class="strength-label" id="regPwLabel"></div>
+        <div class="field-hint">Use 8+ characters with a mix of cases, numbers, and symbols.</div>
+      </div>
+      <div class="field"><label>Confirm password</label><input type="password" placeholder="Re-enter password"></div>
+
+      <label class="check-row" style="margin-bottom:20px;"><input type="checkbox"> I agree to the Terms and Privacy Policy</label>
+
+      <button class="btn btn-primary btn-block btn-lg" onclick="location.href='otp-verification.html'">Create account</button>
+
+      <div class="auth-divider">or continue with</div>
+      <div class="social-row"><button class="social-btn">Google</button><button class="social-btn">GitHub</button></div>
+      <div class="auth-footer-link">Already have an account? <a href="login.html">Sign in</a></div>
+
+    </div>
+  </div>
+</div>
+<script src="js/app.js"></script>
+<script>initStrengthMeter('regPassInput','regPwMeter','regPwLabel');</script>
+</body>
+</html>
