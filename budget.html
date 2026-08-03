@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARTHA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">₹</div>
+    <div>
+      <div class="brand-name">ARTHA</div>
+      <div class="brand-tag">Finance Ledger</div>
+    </div>
+  </div>
+  <nav class="main-nav">
+      <a class="nav-item" href="dashboard.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Dashboard</a>
+      <a class="nav-item" href="expenses.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18M7 15h4M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg>Expenses</a>
+      <a class="nav-item" href="income.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Income</a>
+      <a class="nav-item active" href="budget.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Budget</a>
+    <div class="nav-section-label">Private</div>
+      <a class="nav-item" href="diary.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>Diary</a>
+      <a class="nav-item" href="vault.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>Vault</a>
+    <div class="nav-section-label">Account</div>
+      <a class="nav-item" href="settings.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3h4l.6 3.2a7.6 7.6 0 012.2 1.3l3-1.1 2 3.5-2.4 2.1a7.7 7.7 0 010 2.5l2.4 2.1-2 3.5-3-1.1a7.6 7.6 0 01-2.2 1.3L14 21h-4l-.6-3.2a7.6 7.6 0 01-2.2-1.3l-3 1.1-2-3.5 2.4-2.1a7.7 7.7 0 010-2.5L2.2 8.9l2-3.5 3 1.1a7.6 7.6 0 012.2-1.3z"/><circle cx="12" cy="12" r="3"/></svg>Settings</a>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="avatar-sm">Sqaud</div>
+    <div>
+      <div class="foot-name">Sqaud</div>
+      <div class="foot-role">Diploma · Sem 5</div>
+    </div>
+    <a class="logout-link" href="login.html" title="Log out"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></a>
+  </div>
+</aside>
+<main class="content">
+  <div class="topbar">
+    <div>
+      <div class="page-eyebrow">Control</div>
+      <div class="page-title">Budget</div>
+      <div class="page-sub">Set limits, watch the ledger, get warned early.</div>
+    </div>
+    <div class="topbar-actions">
+      <div class="icon-btn" title="Notifications" onclick="location.href='dashboard.html#notifications'">
+        
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+        <span class="dot-badge"></span>
+      </div><button class="btn btn-primary" onclick="openModal('setBudgetModal')">Set category budget</button>
+    </div>
+  </div>
+
+  <div class="alert-banner warn">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--brass); flex-shrink:0;"><path d="M12 9v4M12 17h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>
+    <span><strong>2 categories</strong> are above 85% of their budget this month.</span>
+    <button class="close-x">✕</button>
+  </div>
+
+  <div class="content-grid" style="grid-template-columns: 1fr 1.6fr;">
+    <div class="panel" style="text-align:center;">
+      <div class="panel-title" style="margin-bottom:18px;">Overall budget used</div>
+      <div class="circular-progress">
+        <svg width="130" height="130" id="overallCp">
+          <circle cx="65" cy="65" r="55" stroke="#E4DCC5" stroke-width="10" fill="none"/>
+          <circle class="cp-fill" cx="65" cy="65" r="55" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="cp-value"><div class="cp-num">76%</div><div class="cp-label">₹24,180 / 32,000</div></div>
+      </div>
+      <p style="font-size:12.5px; color:var(--text-muted); margin-top:16px;">₹7,820 remaining · 6 days left in July</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title" style="margin-bottom:6px;">Category budgets</div>
+      <div class="budget-cat-row"><div class="budget-cat-name">Food & Dining</div><div class="budget-bar-track"><div class="budget-bar-fill danger" style="width:92%;"></div></div><div class="budget-cat-amt">₹9,200 / 10,000</div></div>
+      <div class="budget-cat-row"><div class="budget-cat-name">Transport</div><div class="budget-bar-track"><div class="budget-bar-fill warn" style="width:78%;"></div></div><div class="budget-cat-amt">₹3,120 / 4,000</div></div>
+      <div class="budget-cat-row"><div class="budget-cat-name">Education</div><div class="budget-bar-track"><div class="budget-bar-fill" style="width:54%;"></div></div><div class="budget-cat-amt">₹5,400 / 10,000</div></div>
+      <div class="budget-cat-row"><div class="budget-cat-name">Bills</div><div class="budget-bar-track"><div class="budget-bar-fill warn" style="width:88%;"></div></div><div class="budget-cat-amt">₹4,600 / 5,200</div></div>
+      <div class="budget-cat-row"><div class="budget-cat-name">Shopping</div><div class="budget-bar-track"><div class="budget-bar-fill" style="width:33%;"></div></div><div class="budget-cat-amt">₹1,880 / 5,700</div></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><div class="panel-title">Budget alert history</div></div>
+    <div class="seclog-row"><div class="seclog-icon" style="background:rgba(176,80,63,0.12);">🔴</div><div><strong>Food & Dining</strong> crossed 90% — 24 Jul, 9:02 PM</div></div>
+    <div class="seclog-row"><div class="seclog-icon" style="background:rgba(184,145,47,0.14);">🟡</div><div><strong>Bills</strong> crossed 80% — 20 Jul, 11:15 AM</div></div>
+    <div class="seclog-row"><div class="seclog-icon" style="background:rgba(184,145,47,0.14);">🟡</div><div><strong>Transport</strong> crossed 75% — 18 Jul, 6:40 PM</div></div>
+  </div>
+
+  <div class="modal-overlay" id="setBudgetModal">
+    <div class="modal">
+      <div class="modal-head"><div class="modal-title">Set category budget</div><button class="modal-close" onclick="closeModal('setBudgetModal')">✕</button></div>
+      <div class="field"><label>Category</label><select><option>Food & Dining</option><option>Transport</option><option>Education</option><option>Bills</option><option>Shopping</option></select></div>
+      <div class="field"><label>Monthly limit (₹)</label><input type="number" placeholder="10000"></div>
+      <div class="field"><label>Alert threshold</label><select><option>75%</option><option selected>80%</option><option>90%</option></select></div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closeModal('setBudgetModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="closeModal('setBudgetModal'); showToast('Budget saved')">Save</button>
+      </div>
+    </div>
+  </div>
+
+</main>
+</div>
+<script src="js/app.js"></script>
+<script>drawCircularProgress("overallCp", 76, "--terracotta");</script>
+</body>
+</html>

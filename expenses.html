@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Expenses — ARTHA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">₹</div>
+    <div>
+      <div class="brand-name">ARTHA</div>
+      <div class="brand-tag">Finance Ledger</div>
+    </div>
+  </div>
+  <nav class="main-nav">
+      <a class="nav-item" href="dashboard.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Dashboard</a>
+      <a class="nav-item active" href="expenses.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18M7 15h4M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg>Expenses</a>
+      <a class="nav-item" href="income.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Income</a>
+      <a class="nav-item" href="budget.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Budget</a>
+    <div class="nav-section-label">Private</div>
+      <a class="nav-item" href="diary.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>Diary</a>
+      <a class="nav-item" href="vault.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>Vault</a>
+    <div class="nav-section-label">Account</div>
+      <a class="nav-item" href="settings.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3h4l.6 3.2a7.6 7.6 0 012.2 1.3l3-1.1 2 3.5-2.4 2.1a7.7 7.7 0 010 2.5l2.4 2.1-2 3.5-3-1.1a7.6 7.6 0 01-2.2 1.3L14 21h-4l-.6-3.2a7.6 7.6 0 01-2.2-1.3l-3 1.1-2-3.5 2.4-2.1a7.7 7.7 0 010-2.5L2.2 8.9l2-3.5 3 1.1a7.6 7.6 0 012.2-1.3z"/><circle cx="12" cy="12" r="3"/></svg>Settings</a>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="avatar-sm">Sqaud</div>
+    <div>
+      <div class="foot-name">Sqaud</div>
+      <div class="foot-role">Diploma · Sem 5</div>
+    </div>
+    <a class="logout-link" href="login.html" title="Log out"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></a>
+  </div>
+</aside>
+<main class="content">
+  <div class="topbar">
+    <div>
+      <div class="page-eyebrow">Ledger</div>
+      <div class="page-title">Expenses</div>
+      <div class="page-sub">Every rupee spent, searchable and filterable.</div>
+    </div>
+    <div class="topbar-actions">
+      <div class="icon-btn" title="Notifications" onclick="location.href='dashboard.html#notifications'">
+        
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+        <span class="dot-badge"></span>
+      </div><button class="btn btn-primary" onclick="openModal('addExpenseModal')">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+        Add expense
+      </button>
+    </div>
+  </div>
+
+  <div class="toolbar">
+    <div class="search-box">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="text" placeholder="Search transactions, merchants...">
+    </div>
+    <select class="select-chip"><option>All categories</option><option>Food & Dining</option><option>Transport</option><option>Education</option><option>Bills</option><option>Shopping</option></select>
+    <select class="select-chip"><option>This month</option><option>Last month</option><option>Last 3 months</option><option>Custom range</option></select>
+    <select class="select-chip"><option>All methods</option><option>UPI</option><option>Cash</option><option>Debit Card</option><option>Credit Card</option></select>
+  </div>
+
+  <div class="panel">
+    <table>
+      <thead><tr><th>Merchant</th><th>Category</th><th>Method</th><th>Date</th><th style="text-align:right;">Amount</th></tr></thead>
+      <tbody>
+        <tr class="clickable" onclick="openModal('expenseDetail')"><td><div class="txn-merchant"><div class="txn-icon" style="background:rgba(176,80,63,0.12);">🍔</div>Swiggy</div></td><td class="txn-cat">Food & Dining</td><td><span class="pill pill-upi">UPI · PhonePe</span></td><td class="mono" style="color:var(--text-muted); font-size:12.5px;">24 Jul</td><td style="text-align:right;" class="amt-neg">−₹340</td></tr>
+        <tr class="clickable" onclick="openModal('expenseDetail')"><td><div class="txn-merchant"><div class="txn-icon" style="background:rgba(184,145,47,0.14);">🚌</div>Rajkot City Bus Pass</div></td><td class="txn-cat">Transport</td><td><span class="pill pill-cash">Cash</span></td><td class="mono" style="color:var(--text-muted); font-size:12.5px;">22 Jul</td><td style="text-align:right;" class="amt-neg">−₹600</td></tr>
+        <tr class="clickable" onclick="openModal('expenseDetail')"><td><div class="txn-merchant"><div class="txn-icon" style="background:rgba(108,122,118,0.12);">📚</div>Amazon — Reference Books</div></td><td class="txn-cat">Education</td><td><span class="pill pill-card">Debit Card</span></td><td class="mono" style="color:var(--text-muted); font-size:12.5px;">21 Jul</td><td style="text-align:right;" class="amt-neg">−₹1,240</td></tr>
+        <tr class="clickable" onclick="openModal('expenseDetail')"><td><div class="txn-merchant"><div class="txn-icon" style="background:rgba(176,80,63,0.12);">☕</div>Chai Point</div></td><td class="txn-cat">Food & Dining</td><td><span class="pill pill-upi">UPI · Paytm</span></td><td class="mono" style="color:var(--text-muted); font-size:12.5px;">21 Jul</td><td style="text-align:right;" class="amt-neg">−₹90</td></tr>
+        <tr class="clickable" onclick="openModal('expenseDetail')"><td><div class="txn-merchant"><div class="txn-icon" style="background:rgba(184,145,47,0.14);">📱</div>Airtel Recharge</div></td><td class="txn-cat">Bills</td><td><span class="pill pill-upi">UPI · Google Pay</span></td><td class="mono" style="color:var(--text-muted); font-size:12.5px;">19 Jul</td><td style="text-align:right;" class="amt-neg">−₹399</td></tr>
+      </tbody>
+    </table>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:18px;">
+      <span style="font-size:12.5px; color:var(--text-muted);">Showing 5 of 47 transactions</span>
+      <div style="display:flex; gap:6px;">
+        <button class="btn btn-ghost" style="padding:7px 12px;">Prev</button>
+        <button class="btn btn-primary" style="padding:7px 12px;">1</button>
+        <button class="btn btn-ghost" style="padding:7px 12px;">2</button>
+        <button class="btn btn-ghost" style="padding:7px 12px;">3</button>
+        <button class="btn btn-ghost" style="padding:7px 12px;">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="expenseDetail">
+    <div class="modal">
+      <div class="modal-head"><div class="modal-title">Expense detail</div><button class="modal-close" onclick="closeModal('expenseDetail')">✕</button></div>
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:18px;">
+        <div class="txn-icon" style="background:rgba(176,80,63,0.12); width:44px; height:44px; font-size:18px;">🍔</div>
+        <div><div style="font-weight:700; font-size:15px;">Swiggy</div><div class="txn-cat">Food & Dining · 24 Jul, 8:42 PM</div></div>
+      </div>
+      <div class="field"><label>Amount</label><input value="₹340.00" readonly></div>
+      <div class="field"><label>Payment method</label><input value="UPI · PhonePe" readonly></div>
+      <div class="field"><label>Note</label><input value="Dinner with hostel roommates"></div>
+      <div class="modal-actions">
+        <button class="btn btn-danger" onclick="closeModal('expenseDetail'); showToast('Expense deleted','error')">Delete</button>
+        <button class="btn btn-primary" onclick="closeModal('expenseDetail'); showToast('Changes saved')">Save changes</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="addExpenseModal">
+    <div class="modal">
+      <div class="modal-head"><div class="modal-title">Add expense</div><button class="modal-close" onclick="closeModal('addExpenseModal')">✕</button></div>
+      <div class="field"><label>Amount (₹)</label><input type="number" placeholder="0.00"></div>
+      <div class="field"><label>Category</label><select><option>Food & Dining</option><option>Transport</option><option>Education</option><option>Shopping</option><option>Bills</option></select></div>
+      <div class="field"><label>Payment method</label><select><option>UPI</option><option>Cash</option><option>Debit Card</option><option>Credit Card</option></select></div>
+      <div class="field"><label>Date</label><input type="date"></div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closeModal('addExpenseModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="closeModal('addExpenseModal'); showToast('Expense added')">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <button class="fab" onclick="openModal('addExpenseModal')" aria-label="Add expense">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M12 5v14M5 12h14"/></svg>
+  </button>
+
+</main>
+</div>
+<script src="js/app.js"></script>
+
+</body>
+</html>
