@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diary — Khata</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">₹</div>
+    <div>
+      <div class="brand-name">Khata</div>
+      <div class="brand-tag">Finance Ledger</div>
+    </div>
+  </div>
+  <nav class="main-nav">
+      <a class="nav-item" href="dashboard.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Dashboard</a>
+      <a class="nav-item" href="expenses.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18M7 15h4M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg>Expenses</a>
+      <a class="nav-item" href="income.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Income</a>
+      <a class="nav-item" href="budget.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Budget</a>
+    <div class="nav-section-label">Private</div>
+      <a class="nav-item active" href="diary.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>Diary</a>
+      <a class="nav-item" href="vault.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>Vault</a>
+    <div class="nav-section-label">Account</div>
+      <a class="nav-item" href="settings.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3h4l.6 3.2a7.6 7.6 0 012.2 1.3l3-1.1 2 3.5-2.4 2.1a7.7 7.7 0 010 2.5l2.4 2.1-2 3.5-3-1.1a7.6 7.6 0 01-2.2 1.3L14 21h-4l-.6-3.2a7.6 7.6 0 01-2.2-1.3l-3 1.1-2-3.5 2.4-2.1a7.7 7.7 0 010-2.5L2.2 8.9l2-3.5 3 1.1a7.6 7.6 0 012.2-1.3z"/><circle cx="12" cy="12" r="3"/></svg>Settings</a>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="avatar-sm">Sqaud</div>
+    <div>
+      <div class="foot-name">Sqaud</div>
+      <div class="foot-role">Diploma · Sem 5</div>
+    </div>
+    <a class="logout-link" href="login.html" title="Log out"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></a>
+  </div>
+</aside>
+<main class="content">
+  <div class="topbar">
+    <div>
+      <div class="page-eyebrow">Private</div>
+      <div class="page-title">Diary</div>
+      <div class="page-sub">Passphrase-protected notes about your money habits.</div>
+    </div>
+    <div class="topbar-actions">
+      <div class="icon-btn" title="Notifications" onclick="location.href='dashboard.html#notifications'">
+        
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+        <span class="dot-badge"></span>
+      </div><span class="session-timer" id="diarySessionTimer" style="display:none;"><span class="dot"></span></span>
+    </div>
+  </div>
+
+  <div id="diaryLocked">
+    <div class="diary-unlock-wrap">
+      <div class="diary-unlock-card">
+        <div class="diary-lock-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+        </div>
+        <div class="secure-title" style="font-size:19px;">Diary is locked</div>
+        <p class="secure-desc" style="margin-bottom:22px;">Enter your diary passphrase — separate from your login password — to view entries. This keeps your notes safe even if your account session is open.</p>
+
+        <div class="lockout-box" id="diaryLockoutBox"></div>
+
+        <div class="field password-field" style="text-align:left;">
+          <label style="color:#A9B3AD;">Passphrase</label>
+          <input type="password" id="diaryPassInput" placeholder="Enter passphrase" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.15); color:#EDEAE0;">
+          <button class="password-toggle" style="color:#A9B3AD;" onclick="togglePassword('diaryPassInput', this)">Show</button>
+        </div>
+        <div class="attempts-row" id="diaryAttemptsRow" style="justify-content:center;">
+          <span class="attempt-dot"></span><span class="attempt-dot"></span><span class="attempt-dot"></span><span class="attempt-dot"></span><span class="attempt-dot"></span>
+        </div>
+        <button class="btn btn-gold btn-block" id="diaryUnlockBtn" onclick="attemptDiaryUnlock()">Unlock diary</button>
+        <p style="font-size:11.5px; color:#8C9994; margin-top:14px;">Forgotten your passphrase? Recovery requires identity re-verification and a 24-hour cooling period.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="diaryUnlocked" style="display:none;">
+    <div class="alert-banner info">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--teal); flex-shrink:0;"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg>
+      <span>Diary unlocked for this session only. It will re-lock automatically after 15 minutes of inactivity or when you leave this page.</span>
+      <button class="btn btn-ghost" style="margin-left:auto; padding:6px 12px;" onclick="lockDiary()">Lock now</button>
+    </div>
+
+    <div class="panel-head" style="margin-bottom:16px;">
+      <div class="panel-title">Your entries</div>
+      <button class="btn btn-primary" onclick="openModal('addDiaryModal')">New entry</button>
+    </div>
+
+    <div class="diary-entry-card">
+      <span class="diary-entry-mood">😌</span>
+      <div class="diary-entry-date">24 July 2026, 9:10 PM</div>
+      <div class="diary-entry-text">Skipped ordering in tonight even though I wanted to — cooked instead. Small win but it adds up. Food budget is too tight this month, need to meal-prep on Sundays going forward.</div>
+    </div>
+    <div class="diary-entry-card">
+      <span class="diary-entry-mood">😬</span>
+      <div class="diary-entry-date">20 July 2026, 6:45 PM</div>
+      <div class="diary-entry-text">Overspent on the group project printouts — ₹600 I hadn't planned for. Need to build a small "college misc" buffer instead of pulling from food budget.</div>
+    </div>
+    <div class="diary-entry-card">
+      <span class="diary-entry-mood">🎯</span>
+      <div class="diary-entry-date">14 July 2026, 8:00 AM</div>
+      <div class="diary-entry-text">Got the IBM stipend today. Moved ₹5,000 straight to savings before I could touch it. Feels good to pay myself first for once.</div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="addDiaryModal">
+    <div class="modal">
+      <div class="modal-head"><div class="modal-title">New diary entry</div><button class="modal-close" onclick="closeModal('addDiaryModal')">✕</button></div>
+      <div class="field"><label>Mood</label>
+        <select><option>😌 Calm</option><option>🎯 Focused</option><option>😬 Anxious</option><option>😄 Happy</option><option>😔 Low</option></select>
+      </div>
+      <div class="field"><label>Entry</label><textarea placeholder="What happened with money today?"></textarea></div>
+      <div class="modal-actions">
+        <button class="btn btn-ghost" onclick="closeModal('addDiaryModal')">Cancel</button>
+        <button class="btn btn-primary" onclick="closeModal('addDiaryModal'); showToast('Entry saved & encrypted')">Save entry</button>
+      </div>
+    </div>
+  </div>
+
+</main>
+</div>
+<script src="js/app.js"></script>
+<script>
+const diaryState = { attempts: 0, max: 5 };
+function attemptDiaryUnlock() {
+  const val = document.getElementById('diaryPassInput').value;
+  const dots = document.querySelectorAll('#diaryAttemptsRow .attempt-dot');
+  const lockoutBox = document.getElementById('diaryLockoutBox');
+  if (diaryState.attempts >= diaryState.max) return;
+  // Demo-only check. Real verification must happen server-side against a
+  // salted hash — never compare plaintext passphrases in the browser.
+  if (val === 'demo1234') {
+    document.getElementById('diaryLocked').style.display = 'none';
+    document.getElementById('diaryUnlocked').style.display = 'block';
+    const timerEl = document.getElementById('diarySessionTimer');
+    timerEl.style.display = 'inline-flex';
+    startUnlockSessionTimer('diarySessionTimer', 15, lockDiary);
+    showToast('Diary unlocked');
+    return;
+  }
+  diaryState.attempts++;
+  dots.forEach((d,i)=> d.classList.toggle('used', i < diaryState.attempts));
+  if (diaryState.attempts >= diaryState.max) {
+    lockoutBox.classList.add('show');
+    lockoutBox.innerHTML = '🔒 Too many attempts. Diary access locked for 15 minutes.';
+    document.getElementById('diaryUnlockBtn').disabled = true;
+  } else {
+    showToast(`Wrong passphrase — ${diaryState.max - diaryState.attempts} attempt(s) left`, 'error');
+  }
+}
+function lockDiary() {
+  document.getElementById('diaryLocked').style.display = 'block';
+  document.getElementById('diaryUnlocked').style.display = 'none';
+  document.getElementById('diarySessionTimer').style.display = 'none';
+  showToast('Diary re-locked');
+}
+</script>
+</body>
+</html>

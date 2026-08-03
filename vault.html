@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vault — Khata</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-mark">₹</div>
+    <div>
+      <div class="brand-name">Khata</div>
+      <div class="brand-tag">Finance Ledger</div>
+    </div>
+  </div>
+  <nav class="main-nav">
+      <a class="nav-item" href="dashboard.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>Dashboard</a>
+      <a class="nav-item" href="expenses.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10h18M7 15h4M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg>Expenses</a>
+      <a class="nav-item" href="income.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>Income</a>
+      <a class="nav-item" href="budget.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Budget</a>
+    <div class="nav-section-label">Private</div>
+      <a class="nav-item" href="diary.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>Diary</a>
+      <a class="nav-item active" href="vault.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>Vault</a>
+    <div class="nav-section-label">Account</div>
+      <a class="nav-item" href="settings.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 3h4l.6 3.2a7.6 7.6 0 012.2 1.3l3-1.1 2 3.5-2.4 2.1a7.7 7.7 0 010 2.5l2.4 2.1-2 3.5-3-1.1a7.6 7.6 0 01-2.2 1.3L14 21h-4l-.6-3.2a7.6 7.6 0 01-2.2-1.3l-3 1.1-2-3.5 2.4-2.1a7.7 7.7 0 010-2.5L2.2 8.9l2-3.5 3 1.1a7.6 7.6 0 012.2-1.3z"/><circle cx="12" cy="12" r="3"/></svg>Settings</a>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="avatar-sm">Sqaud</div>
+    <div>
+      <div class="foot-name">Sqaud</div>
+      <div class="foot-role">Diploma · Sem 5</div>
+    </div>
+    <a class="logout-link" href="login.html" title="Log out"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg></a>
+  </div>
+</aside>
+<main class="content">
+  <div class="topbar">
+    <div>
+      <div class="page-eyebrow">Private</div>
+      <div class="page-title">Document Vault</div>
+      <div class="page-sub">Encrypted storage for statements, receipts, and IDs.</div>
+    </div>
+    <div class="topbar-actions">
+      <div class="icon-btn" title="Notifications" onclick="location.href='dashboard.html#notifications'">
+        
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+        <span class="dot-badge"></span>
+      </div><span class="session-timer" id="vaultSessionTimer" style="display:none;"><span class="dot"></span></span>
+    </div>
+  </div>
+
+  <div id="vaultLocked">
+    <div class="diary-unlock-wrap">
+      <div class="diary-unlock-card">
+        <div class="diary-lock-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></div>
+        <div class="secure-title" style="font-size:19px;">Vault is locked</div>
+        <p class="secure-desc" style="margin-bottom:22px;">Documents are encrypted at rest. Enter your vault passphrase to view or upload files.</p>
+        <div class="lockout-box" id="vaultLockoutBox"></div>
+        <div class="field password-field" style="text-align:left;">
+          <label style="color:#A9B3AD;">Passphrase</label>
+          <input type="password" id="vaultPassInput" placeholder="Enter passphrase" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.15); color:#EDEAE0;">
+          <button class="password-toggle" style="color:#A9B3AD;" onclick="togglePassword('vaultPassInput', this)">Show</button>
+        </div>
+        <div class="attempts-row" id="vaultAttemptsRow" style="justify-content:center;">
+          <span class="attempt-dot"></span><span class="attempt-dot"></span><span class="attempt-dot"></span><span class="attempt-dot"></span><span class="attempt-dot"></span>
+        </div>
+        <button class="btn btn-gold btn-block" id="vaultUnlockBtn" onclick="attemptVaultUnlock()">Unlock vault</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="vaultUnlocked" style="display:none;">
+    <div class="alert-banner info">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+      <span>Vault unlocked for this session. Files are decrypted only in memory and re-locked after 15 minutes.</span>
+      <button class="btn btn-ghost" style="margin-left:auto; padding:6px 12px;" onclick="lockVault()">Lock now</button>
+    </div>
+
+    <div class="panel" style="margin-bottom:18px;">
+      <div class="panel-title" style="margin-bottom:14px;">Upload a document</div>
+      <div class="dropzone" id="vaultDropzone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+        <div style="font-weight:600; font-size:13.5px;">Drag & drop a file, or click to browse</div>
+        <div style="font-size:11.5px; color:var(--text-muted); margin-top:4px;">PDF, JPG, PNG up to 10 MB · encrypted before storage</div>
+        <input type="file" id="vaultFileInput" style="display:none;">
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><div class="panel-title">Stored documents</div><span style="font-size:12.5px; color:var(--text-muted);">12 files · 340 MB used</span></div>
+      <div class="vault-file-row"><div class="vault-file-icon">📄</div><div style="flex:1;"><div class="vault-file-name">HDFC_Statement_June.pdf</div><div class="vault-file-meta">2.1 MB · uploaded 2 Jul <span class="encrypted-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg> AES-encrypted</span></div></div><button class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></button></div>
+      <div class="vault-file-row"><div class="vault-file-icon">🧾</div><div style="flex:1;"><div class="vault-file-name">Swiggy_Receipt_24Jul.jpg</div><div class="vault-file-meta">640 KB · uploaded 24 Jul <span class="encrypted-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg> AES-encrypted</span></div></div><button class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></button></div>
+      <div class="vault-file-row"><div class="vault-file-icon">🪪</div><div style="flex:1;"><div class="vault-file-name">Aadhaar_Copy.pdf</div><div class="vault-file-meta">890 KB · uploaded 30 Jun <span class="encrypted-tag"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg> AES-encrypted</span></div></div><button class="icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 8l5-5 5 5"/><path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg></button></div>
+    </div>
+  </div>
+
+</main>
+</div>
+<script src="js/app.js"></script>
+<script>
+const vaultState = { attempts: 0, max: 5 };
+function attemptVaultUnlock() {
+  const val = document.getElementById('vaultPassInput').value;
+  const dots = document.querySelectorAll('#vaultAttemptsRow .attempt-dot');
+  const lockoutBox = document.getElementById('vaultLockoutBox');
+  if (vaultState.attempts >= vaultState.max) return;
+  if (val === 'demo1234') {
+    document.getElementById('vaultLocked').style.display = 'none';
+    document.getElementById('vaultUnlocked').style.display = 'block';
+    const timerEl = document.getElementById('vaultSessionTimer');
+    timerEl.style.display = 'inline-flex';
+    startUnlockSessionTimer('vaultSessionTimer', 15, lockVault);
+    initDropzone('vaultDropzone', 'vaultFileInput', (files) => {
+      if (files.length) showToast(`${files[0].name} encrypted & uploaded`);
+    });
+    showToast('Vault unlocked');
+    return;
+  }
+  vaultState.attempts++;
+  dots.forEach((d,i)=> d.classList.toggle('used', i < vaultState.attempts));
+  if (vaultState.attempts >= vaultState.max) {
+    lockoutBox.classList.add('show');
+    lockoutBox.innerHTML = '🔒 Too many attempts. Vault access locked for 15 minutes.';
+    document.getElementById('vaultUnlockBtn').disabled = true;
+  } else {
+    showToast(`Wrong passphrase — ${vaultState.max - vaultState.attempts} attempt(s) left`, 'error');
+  }
+}
+function lockVault() {
+  document.getElementById('vaultLocked').style.display = 'block';
+  document.getElementById('vaultUnlocked').style.display = 'none';
+  document.getElementById('vaultSessionTimer').style.display = 'none';
+  showToast('Vault re-locked');
+}
+</script>
+</body>
+</html>
